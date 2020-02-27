@@ -123,7 +123,6 @@ public class UpdatesActivity extends UpdatesListActivity {
                 } else if (UpdaterController.ACTION_UPDATE_REMOVED.equals(intent.getAction())) {
                     String downloadId = intent.getStringExtra(UpdaterController.EXTRA_DOWNLOAD_ID);
                     mAdapter.removeItem(downloadId);
-                    updateAvailable = false;
                     hideUpdates();
                     downloadUpdatesList(false);
                 }
@@ -235,7 +234,6 @@ public class UpdatesActivity extends UpdatesListActivity {
             sortedUpdates.sort((u1, u2) -> Long.compare(u2.getTimestamp(), u1.getTimestamp()));
             for (UpdateInfo update : sortedUpdates) {
                 if (Utils.isCompatible(update)) {
-                    updateAvailable = true;
                     updateIds.add(update.getDownloadId());
                     showUpdates();
                     break; // Limit to 1

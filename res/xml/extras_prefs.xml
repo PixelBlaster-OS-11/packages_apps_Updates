@@ -22,7 +22,7 @@
         <Preference
             android:icon="@drawable/ic_developer_icon"
             android:key="developer_info"
-            android:summary="Advaith Bhat"
+            android:summary="TheTablaster"
             android:title="@string/developer_info_title" />
 
         <Preference

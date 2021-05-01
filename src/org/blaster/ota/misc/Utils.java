@@ -105,15 +105,13 @@ public class Utils {
     }
 
     public static boolean isCompatible(UpdateBaseInfo update) {
-        if (update.getVersion().compareTo(SystemProperties.get(Constants.PROP_BUILD_VERSION)) < 0) {
+        if (update.getVersion().compareTo(SystemProperties.get(Constants.PROP_BUILD_VERSION)) <= 0 || update.getTimestamp() <= SystemProperties.getLong(Constants.PROP_BUILD_DATE, 0)) {
             Log.d(TAG, update.getName() + " is older than current Android version");
             return false;
         }
-        if (update.getTimestamp() <= SystemProperties.getLong(Constants.PROP_BUILD_DATE, 0)) {
-            Log.d(TAG, update.getName() + " is older than/equal to the current build");
-            return false;
+        else {
+            return true;
         }
-        return true;
     }
 
     public static boolean canInstall(UpdateBaseInfo update) {
